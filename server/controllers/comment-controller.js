@@ -18,7 +18,7 @@ const getAll = async (req, res, next) => {
     try {
         const { id } = req.params;
         const comments = await CommentService.getAll(id)
-        // console.log(comments)
+        console.log(comments)
         res.json(comments)
     } catch (error) {
         console.log(error)

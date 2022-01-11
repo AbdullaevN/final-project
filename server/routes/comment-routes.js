@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-const { auth } = require("../middlewares/auth-middleware");
-const checkPermission = require("../middlewares/check-permission");
-const checkRole = require("../middlewares/check-role");
-const { Comment } = require("../models/index");
+const { auth } = require("../middlewares/auth-middleware.js");
+const checkPermission = require("../middlewares/check-permission.js");
+const checkRole = require("../middlewares/check-role.js");
+const { Comment } = require("../models/index.js");
 const CommentController = require("./../controllers/comment-controller");
 
 router.post("/create", auth, CommentController.create);

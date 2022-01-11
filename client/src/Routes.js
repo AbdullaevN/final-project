@@ -8,7 +8,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import MainPage from "./pages/HomePage/MainPage";
 import SignUp from "./pages/RegistrationPage/RegistrationPage";
 import Navibar from "./components/MainPage/Navbar/Navibar";
-import CommentPage from "./pages/comments/CommentPage";
 import CommentContextProvider from "./contexts/CommentContext";
 import DetailPage from "./pages/DetailPage.js/DetailPage";
 
@@ -31,7 +30,6 @@ const MyRoutes = () => {
             <Route path="/product/detail/:id" element={<DetailPage/>} />
 
             <Route path="/detail/:id" element={<EditPage />} />
-            <Route path="/comment" element={<CommentPage />} />
           </Routes>
         </BrowserRouter>
     </CommentContextProvider>

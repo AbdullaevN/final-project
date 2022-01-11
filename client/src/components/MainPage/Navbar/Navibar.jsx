@@ -30,7 +30,7 @@ const Navibar = () => {
   }
   const user = JSON.parse(localStorage.getItem("token"));
 
-  let admin = jwt(user.accessToken)
+  // let admin = jwt(user.accessToken)
 
 
   return (
@@ -97,7 +97,7 @@ const Navibar = () => {
                 Link
               </Nav.Link>
             </Nav>
-            {user && admin.role === 'ADMIN' ? (<Button>ADMIN</Button>) : (<></>)}
+            {/* {user && admin.role === 'ADMIN' ? (<Button>ADMIN</Button>) : (<></>)} */}
             {user ? (
               <div className="registration" onClick={handleLogOut}>
                 <RiBubbleChartLine />

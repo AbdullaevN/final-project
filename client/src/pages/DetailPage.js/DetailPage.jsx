@@ -129,8 +129,9 @@ const DetailPage = () => {
                 <h2>Loading...</h2>
             )}
 
-            <Comment />
-            {/* <RecommendItems /> */}
+            <div>
+                <Comment />
+            </div>
         </div>
     );
 };
