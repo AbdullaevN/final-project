@@ -15,7 +15,7 @@ const MainHeader = () => {
           <h1 className="smallest-choices">
             Main
           </h1>
-          <Link to="/shop">
+          <Link to="/product">
             <button className="smallest-choices-shop">Shop +</button>
           </Link>
         </div>

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { cardsContext } from "../contexts/cardsContext";
 import "./AllCardsPage.css";
 import Pagination from "../components/pagination/Pagination";
+import Comment from "../components/comments/Comments";
 
 const AllCardsPage = () => {
   const [data, setData] = useState([]);
@@ -30,13 +31,23 @@ const AllCardsPage = () => {
     }
   };
   const navigate = useNavigate();
-  const handleSearch = async (e) => {
-    const value = e.target.value;
-    setSearch(value);
-    const { data } = await $axios.get("/product?limit=20&q=" + value);
-    console.log(data);
-    setData(data.rows);
-  };
+
+  //
+
+  let object = new URLSearchParams(window.location.search)
+  function filterProducts(key, value) {
+    // if (key) {
+    object.set(key, value);
+
+    // console.log(resetFilter)
+    let newUrl = `${window.location.pathname}?${object.toString()}`;
+    if (!key) {
+      newUrl = '/products'
+    }
+    console.log(newUrl)
+    navigate(newUrl);
+    getCards()
+  }
 
   const handleFilter = async (e) => {
     const value = e.target.value;
@@ -45,6 +56,23 @@ const AllCardsPage = () => {
     setData(data.rows);
   };
 
+  // const [brandValue, setBrandValue] = useState("");
+  // const [resetFilter, setResetFilter] = useState(false)
+
+  // function handleFilter(key, value) {
+  //   // if (key) {
+  //   object.set(key, value);
+
+  //   // console.log(resetFilter)
+  //   let newUrl = `${window.location.pathname}?${object.toString()}`;
+  //   if (!key) {
+  //     newUrl = '/products'
+  //   }
+  //   console.log(newUrl)
+  //   navigate(newUrl);
+  //   getProducts();
+  //   setBrandValue(value);
+  // }
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
@@ -61,16 +89,28 @@ const AllCardsPage = () => {
     getCards();
   }, []);
 
+
+
+
+
+
+
+  //
+
+
+  //
+
   return (
     <>
-      <div>
-        <Pagination />
-      </div>
+
       <div>
         <h3>Add products</h3>
       </div>
       <div>
-        <input type="text" value={search} onChange={handleSearch} />
+        <input type="text" value={search} onChange={(e) => {
+          setSearch(e.target.value)
+          filterProducts("q", search)
+        }} />
         <br />
 
         <input
@@ -85,12 +125,7 @@ const AllCardsPage = () => {
           onChange={handleChange}
           value={inputs.price}
         />
-        {/* <input
-          type="text"
-          name="brand"
-          onChange={handleChange}
-          value={inputs.brand}
-        />*/}
+
         <input
           type="text"
           name="img"
@@ -110,12 +145,13 @@ const AllCardsPage = () => {
         </select>
         <div>
           <select id="" onChange={handleFilter}>
-            <option value="Greeting card">Greeting card</option>
-            <option value="Notebook">Notebook</option>
-            <option value="Assorted card sets">Assorted card sets</option>
-            <option value="Wallpaper">Wallpaper</option>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+            <option value="Kids">Kids</option>
+            <option value="Teens">Teens</option>
           </select>
         </div>
+
         <button onClick={handleClick}>Create</button>
         <div className="main-cards">
           {cards ? (
@@ -145,6 +181,17 @@ const AllCardsPage = () => {
                     >
                       Delete
                     </Button>
+                    <Link to={"detail/" + p.id}>
+                      <Button
+                        style={{
+                          marginLeft: "50px",
+                          marginTop: "10px",
+                        }}
+                        variant="dark"
+                      >
+                        Подробнее
+                      </Button>
+                    </Link>
                   </Card.Body>
                 </Card>
               </div>
@@ -153,7 +200,12 @@ const AllCardsPage = () => {
             <></>
           )}
         </div>
+        <div>
+          <Pagination />
+        </div>
+
       </div>
+
     </>
   );
 };

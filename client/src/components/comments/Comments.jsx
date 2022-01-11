@@ -7,6 +7,7 @@ const Comment = () => {
     const { addComments, getCommentsForRoom, saveEditedComment, comments } =
         useContext(commentsContext);
     const [comment, setComment] = useState("");
+    // console.log('qwe')
     function handleChange(e) {
         setComment(e.target.value);
     }

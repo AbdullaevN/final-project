@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import Toastify from "toastify-js";
 import { registrationContext } from "../../contexts/registrationContext";
 import { Link } from "react-router-dom";
+import Pagination from "../../components/pagination/Pagination";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -68,50 +69,57 @@ const SignUp = () => {
     if (logSuccess) navigate("/");
   }, [logSuccess]);
   return (
-    <Container>
-      <Wrapper>
-        <Title>Create an account</Title>
-        <Form
-          onSubmit={async (e) => {
-            e.preventDefault();
+    <>
+      <Container>
+        <Wrapper>
+          <Title>Create an account</Title>
+          <Form
+            onSubmit={async (e) => {
+              e.preventDefault();
 
-            if (!email || !password) {
-            }
-            setIsSubmitting(true);
-            signUpUser(email, password)
-              .then((response) => { })
-              .catch((error) => {
-                console.log(error.message);
-                Toastify({
-                  text: error.message,
-                  className: "error",
-                  style: {
-                    background:
-                      "linear-gradient(to right, rgb(71, 22, 22), red)",
-                  },
-                }).showToast();
-              })
-              .finally(() => setIsSubmitting(false));
-          }}
-        >
-          <Input
-            placeholder="email"
-            name="email"
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            placeholder="password"
-            name="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {logSuccess ? <></> : <p style={{ color: "red" }}>{errorMSG}</p>}
+              if (!email || !password) {
+              }
+              setIsSubmitting(true);
+              signUpUser(email, password)
+                .then((response) => { })
+                .catch((error) => {
+                  console.log(error.message);
+                  Toastify({
+                    text: error.message,
+                    className: "error",
+                    style: {
+                      background:
+                        "linear-gradient(to right, rgb(71, 22, 22), red)",
+                    },
+                  }).showToast();
+                })
+                .finally(() => setIsSubmitting(false));
+            }}
+          >
+            <Input
+              placeholder="email"
+              name="email"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              name="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {logSuccess ? <></> : <p style={{ color: "red" }}>{errorMSG}</p>}
 
-          <Button>Create</Button>
-        </Form>
-      </Wrapper>
-    </Container>
+            <Button>Create</Button>
+
+          </Form>
+
+        </Wrapper>
+      </Container>
+      <div>
+        <Pagination />
+      </div>
+    </>
   );
 };
 

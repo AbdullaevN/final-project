@@ -9,6 +9,7 @@ import { BsDoorClosed } from "react-icons/bs";
 import { BsXSquare } from "react-icons/bs";
 import { IconName, RiBubbleChartLine } from "react-icons/ri";
 import { cardsContext } from '../../../contexts/cardsContext'
+import jwt from 'jwt-decode'
 
 const Navibar = () => {
   const { logOut } = useContext(registrationContext);
@@ -28,6 +29,10 @@ const Navibar = () => {
     getCards();
   }
   const user = JSON.parse(localStorage.getItem("token"));
+
+  let admin = jwt(user.accessToken)
+
+
   return (
     <>
       {/* <div>
@@ -92,6 +97,7 @@ const Navibar = () => {
                 Link
               </Nav.Link>
             </Nav>
+            {user && admin.role === 'ADMIN' ? (<Button>ADMIN</Button>) : (<></>)}
             {user ? (
               <div className="registration" onClick={handleLogOut}>
                 <RiBubbleChartLine />

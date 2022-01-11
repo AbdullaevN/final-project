@@ -37,7 +37,7 @@ const getAll = async ({ q, offset, limit, tag }) => {
     } else {
       return await Product.findAndCountAll({
         where: {
-          title: {
+          name: {
             [Op.iLike]: "%" + q + "%",
           },
         },
