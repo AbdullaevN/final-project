@@ -1,0 +1,96 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,100;1,400&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.smallest-choices-bla {
+  width: 100%;
+}
+.smallest-choices {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.best-seller {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.smallest-choices-shop {
+  margin-top: 40px;
+  width: 270px;
+  border-radius: 50px;
+  border: none;
+  height: 55px;
+  background-color: #f5eee6;
+}
+
+.wrapper {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-demo {
+  width: 17ch;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 3em;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
+}
+
+.order {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.second-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.third-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.ordering button {
+  text-align: center;
+  margin-top: 50px;
+  width: 270px;
+  border-radius: 50px;
+  border: none;
+  height: 55px;
+  background-color: #f5eee6;
+}
+
+.explore {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.background{
+  background: no-repeat center/80% url("https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  z-index: 99;
+  text-align: center;
+}

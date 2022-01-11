@@ -1,0 +1,12 @@
+.my-footer {
+  background: #0e4d77;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 20px;
+  font-size: 15px;
+}
