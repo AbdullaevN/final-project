@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 const { SMTP_USER, SMTP_PASSWORD, SMTP_HOST, SMTP_PORT } = process.env;
 
-const testAccount = nodemailer.createTestAccount();
+// const testAccount = nodemailer.createTestAccount();
 
 const transporter = nodemailer.createTransport({
   host: SMTP_HOST,

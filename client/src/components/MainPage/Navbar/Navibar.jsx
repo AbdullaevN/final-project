@@ -75,7 +75,7 @@ const Navibar = () => {
 
       <Navbar style={{ background: '#c77d4c' }} >
         <Container fluid>
-          <Navbar.Brand href="/">tea</Navbar.Brand>
+          <Navbar.Brand href="/">clothes</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

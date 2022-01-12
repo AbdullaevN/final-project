@@ -27,12 +27,12 @@ const create = async (req, res, next) => {
 };
 const getAll = async (req, res, next) => {
   try {
-    let { q, page, limit, tag } = req.query;
+    let { q, page, limit, type } = req.query;
     page = page || 1;
     limit = limit || 6;
 
     const offset = page * limit - limit;
-    const problems = await ProductService.getAll({ offset, page, q, limit });
+    const problems = await ProductService.getAll({ offset, page, q, limit, type });
     // console.log(req.query);
     res.json(problems);
   } catch (e) {

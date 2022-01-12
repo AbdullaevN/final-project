@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { cardsContext } from "../../contexts/cardsContext";
 
 const Pagination = () => {
-    const { cards, getCards, countOfProducts } = useContext(cardsContext);
+    const { cards, getCards, countOfCards } = useContext(cardsContext);
     const pageNumbers = [];
 
 
@@ -15,14 +15,14 @@ const Pagination = () => {
     useEffect(() => {
         getCards()
     }, [])
-    // console.log(countOfProducts)
-    for (let i = 1; i <= Math.ceil(countOfProducts / 3); i++) {
+    // console.log(countOfCards)
+    for (let i = 1; i <= Math.ceil(countOfCards / 3); i++) {
         pageNumbers.push(i);
     }
-    // console.log(products)
+    // console.log(cards)
     return (
         <div className="pagination">
-            <div className="pagination-div" style={{"background": "red"}}>
+            <div className="pagination-div">
                 <ul>
                     {
                         pageNumbers.map((page) => (

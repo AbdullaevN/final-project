@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FormControl, InputGroup, Button, Card } from "react-bootstrap";
-// import { timeSince } from "../../const/calcTimeLeft";
+import { timeSince } from "../../const/calcTimeLeft";
 import { useParams } from "react-router";
 import { commentsContext } from "../../contexts/CommentContext";
 const CommentBody = ({ item }) => {
@@ -69,6 +69,8 @@ const CommentBody = ({ item }) => {
                 </span>{" "}
                 <span>
                     {" "}
+                    {item.createdAt.slice(0, 10)}, {timeSince(item.createdAtMs)} назад{" "}
+
                 </span>
             </Card.Header>
             <Card.Body>

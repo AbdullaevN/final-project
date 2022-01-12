@@ -11,10 +11,10 @@ const create = async (name, price, brand, type,img) => {
   return product;
 };
 
-const getAll = async ({ q, offset, limit, tag }) => {
-  if (q || tag) {
+const getAll = async ({ q, offset, limit, type }) => {
+  if (q || type) {
     if (!q) q = "";
-    if (tag) {
+    if (type) {
       return await Product.findAndCountAll({
         where: {
           [Op.or]: [
@@ -24,7 +24,7 @@ const getAll = async ({ q, offset, limit, tag }) => {
               },
             },
           ],
-          tag,
+          type,
         },
         // include: [
         //   {

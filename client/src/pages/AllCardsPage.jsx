@@ -4,14 +4,15 @@ import $axios from "../axios";
 import { Link, useNavigate } from "react-router-dom";
 import { cardsContext } from "../contexts/cardsContext";
 import "./AllCardsPage.css";
-import Pagination from "../components/pagination/Pagination";
-import Comment from "../components/comments/Comments";
+import Pagination from '../components/pagination/Pagination'
 
 const AllCardsPage = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-  const [tag, setTag] = useState("Greeting card");
   const { getCards, addCards, cards, deleteCard } = useContext(cardsContext);
+  useEffect(() => {
+    getCards();
+  }, []);
   const [inputs, setInputs] = useState({
     name: "",
     price: "",
@@ -56,11 +57,10 @@ const AllCardsPage = () => {
     setData(data.rows);
   };
 
-  const [brandValue, setBrandValue] = useState("");
-  const [resetFilter, setResetFilter] = useState(false)
+  const [typeValue, setTypeValue] = useState("");
 
-  function handleFilterFilter(key, value) {
-    // if (key) {
+
+  function filterMerch(key, value) {
     object.set(key, value);
 
     // console.log(resetFilter)
@@ -70,9 +70,13 @@ const AllCardsPage = () => {
     }
     console.log(newUrl)
     navigate(newUrl);
-    getCards();
-    setBrandValue(value);
+    getCards()
+    setTypeValue(value);
   }
+  useEffect(() => {
+    setTypeValue(object.get("type"));
+  }, [object]);
+
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
@@ -85,9 +89,7 @@ const AllCardsPage = () => {
     deleteCard(id);
   };
 
-  useEffect(() => {
-    getCards();
-  }, []);
+
 
 
 
@@ -136,17 +138,17 @@ const AllCardsPage = () => {
           <option value="two">two</option>
           <option value="three">three</option>
         </select>
-        <select name="type" id="" onChange={handleChange}>
+        <select type="text" name="type" id="" onChange={handleChange}>
           <option value="Man">Man</option>
           <option value="Woman">Woman</option>
           <option value="Kids">Kids</option>
           <option value="Teens">Teens</option>
         </select>
         <div>
-          <select id="" value={brandValue}
-            onChange={(e) => {
-              filterCards("type", e.target.value)
-            }}>
+          <select id=""
+            value={typeValue}
+            onChange={(e) => filterMerch("type", e.target.value)}
+          >
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>
             <option value="Kids">Kids</option>

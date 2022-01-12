@@ -46,12 +46,12 @@ const EditPage = () => {
                   placeholder="Введите название "
                   name="name"
                   onChange={handleChange}
-                  isValid={!errors.title && touched.title}
-                  isInvalid={!!errors.title}
-                  value={values.title}
+                  isValid={!errors.name && touched.name}
+                  isInvalid={!!errors.name}
+                  value={values.name}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors.title}
+                  {errors.name}
                 </Form.Control.Feedback>
               </Form.Group>
 
