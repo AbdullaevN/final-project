@@ -12,8 +12,9 @@ const MyCarousel = () => {
         <Carousel activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
                 <img
-                    className="d-block w-100"
-                    src="https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    style={{ height: '600px' }}
+                    className="d-block w-100 "
+                    src="https://koloro.ru/media/upload/images/15.jpg"
                     alt="First slide"
                 />
                 <Carousel.Caption>
@@ -23,8 +24,9 @@ const MyCarousel = () => {
             </Carousel.Item>
             <Carousel.Item>
                 <img
-                    className="d-block w-100"
-                    src="https://images.pexels.com/photos/847402/pexels-photo-847402.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    style={{ height: '600px' }}
+                    className="d-block w-100 "
+                    src="https://mariokomi.ru/wp-content/uploads/chaj-ahmad.jpg"
                     alt="Second slide"
                 />
 
@@ -35,8 +37,9 @@ const MyCarousel = () => {
             </Carousel.Item>
             <Carousel.Item>
                 <img
-                    className="d-block w-100"
-                    src="https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    style={{ height: '600px' }}
+                    className="d-block w-100 "
+                    src="https://aris.ua/images/Products/Aris-Tea-packaging_06.jpg"
                     alt="Third slide"
                 />
 

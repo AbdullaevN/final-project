@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FormControl, InputGroup, Button, Card } from "react-bootstrap";
-import { timeSince } from "../../const/calcTimeLeft";
+// import { timeSince } from "../../const/calcTimeLeft";
 import { useParams } from "react-router";
 import { commentsContext } from "../../contexts/CommentContext";
 const CommentBody = ({ item }) => {
@@ -10,17 +10,22 @@ const CommentBody = ({ item }) => {
         saveEditedComment,
         deleteComment,
     } = useContext(commentsContext);
+    // const { getUser, user } = useContext(authContext)
+    const params = useParams();
+    // useEffect(() => {
+    //     getUser(item.userId)
+    // }, [item.userId])
+
     const [comment, setComment] = useState("");
 
     function handleDelete(com) {
         deleteComment(com);
     }
-    const params = useParams();
-    useEffect(() => {
-        getCommentsForRoom(params.id);
-    }, []);
-    let user = localStorage.getItem("user");
-    user = JSON.parse(user);
+    // useEffect(() => {
+    //     getCommentsForRoom(params.id);
+    // }, []);
+    let userLocal = localStorage.getItem("user");
+    userLocal = JSON.parse(userLocal);
 
     let commenting;
     const [bool, setBool] = useState(false);
@@ -54,21 +59,22 @@ const CommentBody = ({ item }) => {
         setBool(true);
         getCommentToEdit(item.id);
     }
+
     return (
         <Card className="mt-2">
             <Card.Header>
                 <span style={{ fontWeight: "bold", color: "#979797" }}>
+
                     {item.owner}
                 </span>{" "}
                 <span>
                     {" "}
-                    {item.createdAt.slice(0, 10)}, {timeSince(item.createdAtMs)} назад{" "}
                 </span>
             </Card.Header>
             <Card.Body>
                 <Card.Title>{bool ? commenting : item.text}</Card.Title>
-                {user ? (
-                    user.currentUser.displayName === item.owner ? (
+                {userLocal ? (
+                    userLocal.id === item.userId ? (
                         <>
                             <small
                                 onClick={() => handleDelete(item)}

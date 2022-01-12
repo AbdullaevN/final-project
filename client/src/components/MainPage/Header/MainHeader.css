@@ -90,7 +90,8 @@
 }
 
 .background{
-  background: no-repeat center/80% url("https://images.pexels.com/photos/540518/pexels-photo-540518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background:  center url("https://images6.alphacoders.com/412/thumb-1920-412064.jpg");
   z-index: 99;
   text-align: center;
+  color: white;
 }

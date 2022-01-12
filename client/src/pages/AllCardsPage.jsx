@@ -56,23 +56,23 @@ const AllCardsPage = () => {
     setData(data.rows);
   };
 
-  // const [brandValue, setBrandValue] = useState("");
-  // const [resetFilter, setResetFilter] = useState(false)
+  const [brandValue, setBrandValue] = useState("");
+  const [resetFilter, setResetFilter] = useState(false)
 
-  // function handleFilter(key, value) {
-  //   // if (key) {
-  //   object.set(key, value);
+  function handleFilterFilter(key, value) {
+    // if (key) {
+    object.set(key, value);
 
-  //   // console.log(resetFilter)
-  //   let newUrl = `${window.location.pathname}?${object.toString()}`;
-  //   if (!key) {
-  //     newUrl = '/products'
-  //   }
-  //   console.log(newUrl)
-  //   navigate(newUrl);
-  //   getProducts();
-  //   setBrandValue(value);
-  // }
+    // console.log(resetFilter)
+    let newUrl = `${window.location.pathname}?${object.toString()}`;
+    if (!key) {
+      newUrl = '/products'
+    }
+    console.log(newUrl)
+    navigate(newUrl);
+    getCards();
+    setBrandValue(value);
+  }
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
@@ -102,7 +102,6 @@ const AllCardsPage = () => {
 
   return (
     <>
-
       <div>
         <h3>Add products</h3>
       </div>
@@ -144,7 +143,10 @@ const AllCardsPage = () => {
           <option value="Teens">Teens</option>
         </select>
         <div>
-          <select id="" onChange={handleFilter}>
+          <select id="" value={brandValue}
+            onChange={(e) => {
+              filterCards("type", e.target.value)
+            }}>
             <option value="Man">Man</option>
             <option value="Woman">Woman</option>
             <option value="Kids">Kids</option>

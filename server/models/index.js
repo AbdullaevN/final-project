@@ -33,6 +33,7 @@ const CartProduct = sequelize.define("cart_product", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 });
 
+
 const Comment = sequelize.define("comment", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   owner: { type: DataTypes.STRING, allowNull: false },
